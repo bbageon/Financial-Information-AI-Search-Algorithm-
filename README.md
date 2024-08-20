@@ -49,3 +49,20 @@ FTS + 벡터 서치를 결합 할때, Boosting 알고리즘을 활용하는 것�
 https://bcho.tistory.com/1354#comment14704807
 -> Boosting 문서
 * 고려할 점 : 지금 컴퓨팅 자원으로 구현이 가능한 구조인지 잘 모르겠다.
+
+8월 18일 (일)
+요약 : 임베딩 성능을 어떻게 증가할 것인가?
+Langchain => PDF 추출, LLAMA 모델 자체가 입력 프롬프트 사이즈가 크기 때문에 Chuck 를 크게해도 상관이 없음
+
+Embedding => 추출한 청크를 AI 에 맞게 수치화 *** 임베딩 성능을 어떻게 증가할 것인가?
+1. 다른 임베딩 모델 채택
+ 현재 사용하고 있는 intfloat/multilingual-e5-small 임베딩 모델은 상대적으로 작은 임베딩 모델
+
+ => sentence_transformers 라이브러리 사용하여 임베딩을 생성
+
+2. 텍스트 전처리
+  공백, 특수 문자 제거
+
+3. FAISS 라이브러리 파라미터 변경
+ nlist : 데이터셋을 나눌 클러스터의 개수
+ nprobe : 탐색할 클러스터의 개수를 지정
